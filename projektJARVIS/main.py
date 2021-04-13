@@ -41,7 +41,7 @@ def run_jarvis(command):
     if 'play' in command:
         song = command.replace('play ', '')
         talk('Playing')
-        bok = (song[1:]) + bok.replace(' ', '_')
+        bok = (song[1:]).replace(' ', '_').replace('ž', 'z').replace('č', 'c').replace('ć', 'c').replace('š', 's').replace('đ', 'd')
         html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + bok)
         video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
         webbrowser.open("https://www.youtube.com/watch?v=" + video_ids[0])
